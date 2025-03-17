@@ -1,3 +1,7 @@
+import 'package:atm_consultoria/Cliente.dart';
+import 'package:atm_consultoria/Contato.dart';
+import 'package:atm_consultoria/Empresa.dart';
+import 'package:atm_consultoria/Servicos.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +16,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  void _abrirEmpresa() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Empresa()));
+  }
+
+  void _abrirServico() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Servicos()),
+    );
+  }
+
+  void _abrirCliente() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Cliente()));
+  }
+
+  void _abrirContato() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Contato()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +56,19 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset("images/menu_empresa.png", height: 100),
-                Image.asset("images/menu_servico.png", height: 100),
+                GestureDetector(
+                  onTap: () {
+                    _abrirEmpresa();
+                  },
+                  child: Image.asset("images/menu_empresa.png", height: 100),
+                ),
+
+                GestureDetector(
+                  onTap: () {
+                    _abrirServico();
+                  },
+                  child: Image.asset("images/menu_servico.png", height: 100),
+                ),
               ],
             ),
             SizedBox(height: 32), // Espaço entre as linhas
@@ -42,8 +76,18 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset("images/menu_cliente.png", height: 100),
-                Image.asset("images/menu_contato.png", height: 100),
+                GestureDetector(
+                  onTap: () {
+                    _abrirCliente();
+                  },
+                  child: Image.asset("images/menu_cliente.png", height: 100),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _abrirContato();
+                  },
+                  child: Image.asset("images/menu_contato.png", height: 100),
+                ),
               ],
             ),
           ],
